@@ -20,7 +20,7 @@ let student = [
         course: ["mindX 01", "mindX 02", "mindX 03"]
     }
 ];
-// console.log(typeof student[0]); // xem kieu dl minh muon => object
+// console.log(typeof student[0]); // xem kieu du lieu minh muon => object
 // // muon xem 1 bien co phai la Array hay khong ta dung cu phap
 // console.log(Array.isArray(student[0])); // true => do la 1 Array && false thi nguoc lai
 
