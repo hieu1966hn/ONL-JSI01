@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>Ưelcome to Duong's epik database :"> </h1>
+    <hr>
+
+    <button onclick="addUser()" id="add">Add user</button>
+    <button onclick="deleteUser()" id="delete">Delete user</button>
+    <button onclick="searchUser()" id="search">Search for user</button>
+    <button onclick="updateUser()" id="update">Update user</button>
+
+    <table id="display">
+        <tbody>
+            <tr>
+                <th style="color: red;"><b>Name</b></th>
+                <th style="color: red;"><b>Age</b></th>
+                <th style="color: red;"><b>Courses</b></th>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr id="Dương">
+                <th name="name">Dương</th>
+                <th name="age">16</th>
+                <th name="course">MindX 01,MindX 02,MindX 03</th>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr id="Thịnh">
+                <th name="name">Thịnh</th>
+                <th name="age">17</th>
+                <th name="course">MindX 02,MindX 03,MindX 04</th>
+            </tr>
+        </tbody>
+        <tbody>
+            <tr id="Cường">
+                <th name="name">Cường</th>
+                <th name="age">16</th>
+                <th name="course">MindX 01,MindX 03,MindX 04</th>
+            </tr>
+        </tbody>
+        
+
+    </table>
+    <script src="../js/script.js"></script>
+    <script src="../js/controller.js"></script>
+</body>
+</html>

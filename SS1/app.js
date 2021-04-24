@@ -46,6 +46,7 @@ Nếu khóa học không có, hiển thị: “Chưa có lớp học này!”.
 
 const mindxCourse = prompt("nhap vao khoa hoc");
 // neu nguoi dung nhap thua dau space o dau hoac cuoi => se bi tu dong bo di
+
 // let course = [];
 for (let i of student) {
     if (i.course.indexOf(mindxCourse, 0) != (-1)) {
@@ -59,8 +60,8 @@ for (let i of student) {
 //////////////////////// Bai 2:
 
 
-let arr1 = [0, 2, 4, 6, 8];
-let arr2 = [1, 3, 5, 7];
+// let arr1 = [0, 2, 4, 6, 8];
+// let arr2 = [1, 3, 5, 7];
 
 //a) Duyệt 2 array trên và hiển thị ra màn hình những số lớn hơn 3.
 

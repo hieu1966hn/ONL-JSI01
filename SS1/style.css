@@ -1,0 +1,10 @@
+.input-box #find-age{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.input-box input{
+    width: fit-content;
+}
