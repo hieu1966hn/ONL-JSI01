@@ -62,3 +62,5 @@ controller.UPDATE = (data) => {
     }
 
 }
+
+console.log("Hi");
