@@ -13,7 +13,6 @@
 4. Sử dụng abstract class trong Javascript (Advance)
 5. Sử dụng interface trong Javascript
 6. Tổng kết
-
 */
 
 // function sum(a,b){ // this is function
@@ -162,27 +161,39 @@
 class SoHoc {
     constructor(number) {
         this.number = number;
-
-    }
-    setSo(number) {
-        this.number = number
-    }
-    getSo(number) {
-        return number;
     }
 
-    congSo(number) {
-        let a = this.getSo + number.getSo;
-        console.log("Tong la: ", a);
-        return a
-        // let k = new SoHoc();
+    inputInfo() {
+        let number1 = Number(prompt("nhap so thu nhat"))
+        let number2 = Number(prompt("nhap so thu 2"))
+        this.number1 = number1
+        this.number2 = number2
+
+    }
+    printInfo() {
+        console.log("so thu nhat", this.number1);
+        console.log("so thu hai", this.number2);
+    }
+    addition() {
+        return this.number1 + this.number2
+    }
+    subtract() {
+        return this.number1 - this.number2
+    }
+    multi() {
+        return this.number1 * this.number2
+    }
+    division() {
+        if (this.number2 !== 0) {
+            return this.number1 / this.number2;
+        }
+        else {
+            return "you can't do it when you division to Zero!!!"
+        }
     }
 }
 
-
-let number1 = new SoHoc(1);
-let number2 = new SoHoc(2);
-
-
-console.log(number2.getSo());
-console.log(number1.congSo(number2));
+let input = new SoHoc();
+input.inputInfo();
+input.printInfo();
+console.log(input.addition());
