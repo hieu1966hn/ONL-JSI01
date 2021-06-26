@@ -14,8 +14,10 @@ class Counters extends Component {
   handleDelete = (counterId) => {
     // console.log("Event handler Called", counterId);
     const counters = this.state.counters.filter(c =>  c.id !== counterId);
+    // hàm này để trả về những giá trị nào có id !== 1 (vì khi mình click vào thẻ id =1)
+    //=> counters được trả về 3 id khác id mình đã bấm
     this.setState({
-      counters: counters,
+      counters: counters, // update State mới chỉ có 3 thẻ counter với id khác với thẻ đã bấm delete
     });
   };
 
