@@ -3,10 +3,11 @@ import "./counter.css";
 
 class Counter extends Component {
   state = {
-    count: this.props.value,
+    value: this.props.value,
+    count: 0,
     Fa: false,
     imageUrl: "https://picsum.photos/200",
-    tags: []
+    tags: [],
   };
 
   // constructor(){
@@ -26,7 +27,7 @@ class Counter extends Component {
     // this.state.count++;
     // khi state thay doi => redner lai toan bo
     this.setState({
-      count: this.state.count + 1
+      count: this.state.count + 1,
     });
   };
 
@@ -39,9 +40,11 @@ class Counter extends Component {
     // this.state.count++;
     // khi state thay doi => render lai toan bo UI
     this.setState({
-      count: this.state.count - 1
+      count: this.state.count - 1,
     });
   };
+
+  
 
   render() {
     console.log("props:", this.props);
@@ -56,6 +59,13 @@ class Counter extends Component {
         </button>
         <button onClick={this.handleDecrease} className="btn">
           Decrease
+        </button>
+
+        <button
+          onClick={() =>this.props.onDelete(this.props.id)} // truyen id  cua the vao de phan biet la dang xoa the nao
+          className="btn btn-danger btn-sm m-2"
+        >
+          Delete
         </button>
         {/* <ul>.React
           {this.state.tags.map(tag => <li key={tag}>{tag}</li>)}

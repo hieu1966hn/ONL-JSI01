@@ -7,9 +7,14 @@ class Counters extends Component {
       { id: 1, value: 4 },
       { id: 2, value: 3 },
       { id: 3, value: 2 },
-      { id: 4, value: 1 }
-    ]
+      { id: 4, value: 1 },
+    ],
   };
+
+  handleDelete = (counterId) => {
+    console.log("Event handler Called", counterId);
+  };
+
   render() {
     return (
       <div>
@@ -19,9 +24,8 @@ class Counters extends Component {
             value={counter.value}
             selected={true}
             id={counter.id}
-          >
-            <h4>Counter #{counter.id}</h4>
-          </Counter>
+            onDelete={this.handleDelete}
+          ></Counter>
           // 3 giá trị đều nằm ở trong object props{value: counter.value, selected: true}
         ))}
       </div>
