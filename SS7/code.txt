@@ -1,0 +1,69 @@
+import React, { Component } from "react";
+import "./counter.css";
+
+class Counter extends Component {
+  state = {
+    count: 0,
+    Fa: false,
+    imageUrl: "https://picsum.photos/200",
+    tags: []
+  };
+
+  // constructor(){
+  //   super();
+  //   // this.handleIncrement = this.handleIncrement.bind(this);
+  //   // bind: thuc hien viec chay ham
+  // }
+
+  renderTags() {
+    if (this.state.tags.length === 0) return <p>There ae no tags!</p>;
+  }
+
+  handleIncrement = () => {
+    // console.log("Increament clicked", this);
+    // this.state.count++;
+    // khi state thay doi => redner lai toan bo
+    this.setState({
+      count: this.state.count +1,
+    }) 
+  };
+
+  handleDecrease = () => {
+    // console.log("Increament clicked", this);
+    // this.state.count++;
+    // khi state thay doi => redner lai toan bo
+    this.setState({
+      count: this.state.count -1,
+    }) 
+  };
+
+  render() {
+    return (
+      <div>
+        {/* <img src={this.state.imageUrl} alt=""/> */}
+        <span className="number">{this.formatCount()}</span>
+        <button onClick={this.handleIncrement} className="btn">
+          Increament
+        </button>
+        <button onClick={this.handleDecrease} className="btn">
+          Increament
+        </button>
+        {/* <ul>.React
+          {this.state.tags.map(tag => <li key={tag}>{tag}</li>)}
+        </ul> */}
+        {/* {this.state.tags.length === 0 ? <h1>Please create a new tag</h1>: ""}
+        {this.renderTags()} */}
+      </div>
+    );
+  }
+
+  formatCount() {
+    // bình thường thì thì this.state.count
+    const { count } = this.state; // chi lay count thoi, bo Fa
+
+    return count === 0 ? "Zero" : count;
+    ////// if(count === 0 ) {"zero"} else{count}
+  }
+}
+
+export default Counter;
