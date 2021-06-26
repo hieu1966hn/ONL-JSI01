@@ -3,7 +3,7 @@ import "./counter.css";
 
 class Counter extends Component {
   state = {
-    value: this.props.value,
+    value: this.props.counter.value,
     count: 0,
     Fa: false,
     imageUrl: "https://picsum.photos/200",
@@ -62,7 +62,7 @@ class Counter extends Component {
         </button>
 
         <button
-          onClick={() =>this.props.onDelete(this.props.id)} // truyen id  cua the vao de phan biet la dang xoa the nao
+          onClick={() =>this.props.onDelete(this.props.counter.id)} // truyen id  cua the vao de phan biet la dang xoa the nao
           className="btn btn-danger btn-sm m-2"
         >
           Delete

@@ -3,28 +3,34 @@ import Counter from "./counter";
 
 class Counters extends Component {
   state = {
-    couters: [
+    counters: [
       { id: 1, value: 4 },
-      { id: 2, value: 3 },
-      { id: 3, value: 2 },
-      { id: 4, value: 1 },
+      { id: 2, value: 0 },
+      { id: 3, value: 0 },
+      { id: 4, value: 0 },
     ],
   };
 
   handleDelete = (counterId) => {
-    console.log("Event handler Called", counterId);
+    // console.log("Event handler Called", counterId);
+    const counters = this.state.counters.filter(c =>  c.id !== counterId);
+    this.setState({
+      counters: counters,
+    });
   };
 
   render() {
     return (
       <div>
-        {this.state.couters.map((counter) => (
+        {this.state.counters.map((counter) => (
           <Counter
             key={counter.id}
-            value={counter.value}
-            selected={true}
-            id={counter.id}
             onDelete={this.handleDelete}
+            counter={counter}
+            // value={counter.value}
+            // selected={true}
+            // id={counter.id}
+            // selected={counter.selected}
           ></Counter>
           // 3 giá trị đều nằm ở trong object props{value: counter.value, selected: true}
         ))}
