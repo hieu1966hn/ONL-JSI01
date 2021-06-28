@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+import  { Component } from "react"
 import "./counter.css";
 
 class Counter extends Component {
@@ -44,8 +45,6 @@ class Counter extends Component {
     });
   };
 
-  
-
   render() {
     console.log("props:", this.props);
     // trong render se nhan gia tri tuong ung la 1 object co ten la props
@@ -62,7 +61,7 @@ class Counter extends Component {
         </button>
 
         <button
-          onClick={() =>this.props.onDelete(this.props.counter.id)} // truyen id  cua the vao de phan biet la dang xoa the nao
+          onClick={() => this.props.onDelete(this.props.counter.id)} // truyen id  cua the vao de phan biet la dang xoa the nao
           className="btn btn-danger btn-sm m-2"
         >
           Delete
