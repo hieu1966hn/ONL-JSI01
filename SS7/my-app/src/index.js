@@ -15,4 +15,4 @@ import Counters from "./components/counters";
 />
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(<Login />, rootElement);
+ReactDOM.render(<App />, rootElement);

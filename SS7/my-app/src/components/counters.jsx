@@ -11,9 +11,29 @@ class Counters extends Component {
     ],
   };
 
+  handleIncrement = (counter) => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index].value++;
+    this.setState({
+      counters,
+    });
+  };
+
+  handleReset = () => {
+    const counters = this.state.counters.map((c) => {
+      c.value = 0;
+      return c;
+    });
+
+    this.setState({
+      counters,
+    });
+  };
+
   handleDelete = (counterId) => {
     // console.log("Event handler Called", counterId);
-    const counters = this.state.counters.filter(c =>  c.id !== counterId);
+    const counters = this.state.counters.filter((c) => c.id !== counterId);
     // hàm này để trả về những giá trị nào có id !== 1 (vì khi mình click vào thẻ id =1)
     //=> counters được trả về 3 id khác id mình đã bấm
     this.setState({
@@ -24,11 +44,18 @@ class Counters extends Component {
   render() {
     return (
       <div>
+        <button
+          onClick={this.handleReset}
+          className="btn btn-primary btn-sm m-2"
+        >
+          Reset
+        </button>
         {this.state.counters.map((counter) => (
           <Counter
             key={counter.id}
             onDelete={this.handleDelete}
             counter={counter}
+            onIncrement={this.handleIncrement}
             // value={counter.value}
             // selected={true}
             // id={counter.id}

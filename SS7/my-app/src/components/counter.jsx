@@ -1,59 +1,56 @@
 import React from "react";
-import  { Component } from "react"
+import { Component } from "react";
 import "./counter.css";
 
 class Counter extends Component {
-  state = {
-    value: this.props.counter.value,
-    count: 0,
-    Fa: false,
-    imageUrl: "https://picsum.photos/200",
-    tags: [],
-  };
-
   // constructor(){
   //   super();
   //   // this.handleIncrement = this.handleIncrement.bind(this);
   //   // bind: thuc hien viec chay ham
   // }
 
-  renderTags() {
-    if (this.state.tags.length === 0) return <p>There ae no tags!</p>;
-  }
+  // renderTags() {
+  //   if (this.state.tags.length === 0) return <p>There ae no tags!</p>;
+  // }
 
-  handleIncrement = (product) => {
-    console.log(product); // xem xem là nó nhận điều gì
+  // handleIncrement = (product) => {
+  //   console.log(product); // xem xem là nó nhận điều gì
 
-    // console.log("Increament clicked", this);
-    // this.state.count++;
-    // khi state thay doi => redner lai toan bo
-    this.setState({
-      count: this.state.count + 1,
-    });
-  };
+  //   // console.log("Increament clicked", this);
+  //   // this.state.count++;
+  //   // khi state thay doi => redner lai toan bo
+  //   this.setState({
+  //     count: this.state.count + 1,
+  //   });
+  // };
 
-  doHandleIncrement = () => {
-    this.handleIncrement({ id: 1 }); // truyen vao 1 bien
-  };
+  // doHandleIncrement = () => {
+  //   this.handleIncrement({ id: 1 }); // truyen vao 1 bien
+  // };
 
-  handleDecrease = () => {
-    // console.log("Increament clicked", this);
-    // this.state.count++;
-    // khi state thay doi => render lai toan bo UI
-    this.setState({
-      count: this.state.count - 1,
-    });
-  };
+  // handleDecrease = () => {
+  //   // console.log("Increament clicked", this);
+  //   // this.state.count++;
+  //   // khi state thay doi => render lai toan bo UI
+  //   this.setState({
+  //     count: this.state.count - 1,
+  //   });
+  // };
 
   render() {
-    console.log("props:", this.props);
+    // console.log("props:", this.props);
     // trong render se nhan gia tri tuong ung la 1 object co ten la props
 
     return (
       <div>
-        <h4>{this.props.id}</h4>
+        {/* <h4>{this.props.id}</h4> */}
         <span className="number">{this.formatCount()}</span>
-        <button onClick={this.doHandleIncrement} className="btn">
+        <button
+          onClick={() => {
+            this.props.onIncrement(this.props.counter);
+          }}
+          className="btn"
+        >
           Increament
         </button>
         <button onClick={this.handleDecrease} className="btn">
@@ -77,9 +74,9 @@ class Counter extends Component {
 
   formatCount() {
     // bình thường thì thì this.state.count
-    const { count } = this.state; // chi lay count thoi, bo Fa
+    const { value } = this.props.counter; // chi lay count thoi, bo Fa
 
-    return count === 0 ? "Zero" : count;
+    return value === 0 ? "Zero" : value;
     ////// if(count === 0 ) {"zero"} else{count}
   }
 }
