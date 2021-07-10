@@ -26,3 +26,8 @@ ul{
     paddding:0;
 }
 
+li{
+    padding: 20px;
+    background: #f6f6f6;
+}
+
