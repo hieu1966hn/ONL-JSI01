@@ -6,6 +6,7 @@ function renderCafe(doc) {
     let name = document.createElement('span');
     let city = document.createElement('span');
     let cross = document.createElement("div");
+    let update = document.createElement("strong");
 
     li.setAttribute('data-id', doc.id);
     // luu lai id cua  doc do trong li
@@ -13,10 +14,13 @@ function renderCafe(doc) {
     name.textContent = doc.data().name;
     city.textContent = doc.data().city;
     cross.textContent = 'x';
+    update.textContent = "update"
 
     li.appendChild(name);
     li.appendChild(city);
     li.appendChild(cross);
+    li.appendChild(update);
+
 
 
     cafeList.appendChild(li)
@@ -27,6 +31,19 @@ function renderCafe(doc) {
         // giai thich them
         let id = e.target.parentElement.getAttribute('data-id');
         db.collection('cafes').doc(id).delete();
+    })
+
+
+    // Updating data
+    update.addEventListener('click', (e) => {
+        e.stopPropagation();
+        let id = e.target.parentElement.getAttribute('data-id');
+        let li = cafeList.querySelector(`[data-id=`+id+`]`);
+        
+        db.collection('cafes').doc(id).update({
+            name: prompt("nhập tên mới muốn update"),
+            city: prompt("nhập city mới muốn update")
+        })
     })
 }
 
@@ -78,8 +95,13 @@ db.collection("cafes").onSnapshot(snapshot => {
             renderCafe(change.doc)
         }
         else if (change.type == "removed") {
-            let li = cafeList.querySelector(`[data-id=${change.doc.id}]`);
+            let li = cafeList.querySelector(`[data-id=`+change.doc.id+`]`);
             cafeList.removeChild(li);
+        }
+        else if(change.type == "modified"){
+            let li = cafeList.querySelector(`[data-id=`+change.doc.id+`]`);
+            console.log(li);
+            cafeList.replaceChild(li,)
         }
     })
 })
