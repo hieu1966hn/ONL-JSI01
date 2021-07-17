@@ -22,7 +22,7 @@ function renderCafe(doc) {
     cafeList.appendChild(li)
 
     // Deleting data
-    cross.addEventListener('click',(e)=>{
+    cross.addEventListener('click', (e) => {
         e.stopPropagation();
         // giai thich them
         let id = e.target.parentElement.getAttribute('data-id');
@@ -31,24 +31,55 @@ function renderCafe(doc) {
 }
 
 // getting data
-db.collection("cafes").get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        console.log(doc.data());
-        renderCafe(doc);
-    })
-});
+// db.collection("cafes").get().then((snapshot) => {
+//     snapshot.docs.forEach(doc => {
+//         // console.log(doc.data());
+//         renderCafe(doc);
+//     })
+// });
+
+// // Lọc dữ liệu mình lấy ra: 
+// db.collection("cafes").where('city', "<","Mau").get().then((snapshot) => {
+//     snapshot.docs.forEach(doc => {
+//         console.log(doc.data());
+//         renderCafe(doc);
+//     })
+// });
+
+
+// // ordering data: training again
+// db.collection("cafes").where('city', "==","HaNoi").get().then((snapshot) => {
+//     snapshot.docs.forEach(doc => {
+//         console.log(doc.data());
+//         renderCafe(doc);
+//     })
+// });
 
 
 // saving data
-form.addEventListener('submit',(e)=>{
+form.addEventListener('submit', (e) => {
     e.preventDefault();
     db.collection('cafes').add({
         name: form.name.value.trim(),
         city: form.city.value.trim(),
     })
-    form.name.value="";
-    form.city.value="";
+    form.name.value = "";
+    form.city.value = "";
 
 })
 
-// 
+// real-time listener
+// Khi có bất kỳ sự thay đổi dl nào trong DB thì onSnapshot sẽ được khởi chạy
+db.collection("cafes").onSnapshot(snapshot => {
+    let changes = snapshot.docChanges();
+    changes.forEach(change => {
+        console.log(change);
+        if (change.type == 'added') {
+            renderCafe(change.doc)
+        }
+        else if (change.type == "removed") {
+            let li = cafeList.querySelector(`[data-id=${change.doc.id}]`);
+            cafeList.removeChild(li);
+        }
+    })
+})
